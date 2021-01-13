@@ -1,0 +1,30 @@
+import "reflect-metadata";
+import { HttpService } from '@nestjs/common';
+import { CreateHospitalsDto, UpdateHospitalsDto, UploadFilesDto } from "./dto/hospital.dto";
+import { Hospitals } from "./entity/hospitals.entity";
+import { Repository, DeleteResult } from "typeorm";
+import { ApiResponse } from "../shared/common";
+import { MailerService } from 'src/mailer/mailer.service';
+export declare class HospitalsService {
+    private hospitalsRepository;
+    private mailerService;
+    private httpService;
+    constructor(hospitalsRepository: Repository<Hospitals>, mailerService: MailerService, httpService: HttpService);
+    findAll(): Promise<ApiResponse<Hospitals[]>>;
+    findByName(hospitalsName: string): Promise<ApiResponse<Hospitals>>;
+    findById(id: string): Promise<ApiResponse<Hospitals>>;
+    delete(id: string): Promise<ApiResponse<DeleteResult>>;
+    create(createHospitalsDto: CreateHospitalsDto): Promise<ApiResponse<Hospitals>>;
+    update(updateHosptialsDto: UpdateHospitalsDto): Promise<ApiResponse<Hospitals>>;
+    readSqlFile: (filepath: string) => string[];
+    checkFileExistsSync(filepath: any): boolean;
+    createDBId(id: string): Promise<ApiResponse<Hospitals>>;
+    getUpdateHospitalDtoFromHospitalEntity(hospital: Hospitals): UpdateHospitalsDto;
+    updateHospital(hospitalDetails: Partial<Hospitals>): Promise<ApiResponse<boolean>>;
+    upload(uploadFilesDto: UploadFilesDto): Promise<ApiResponse<UploadFilesDto>>;
+    getCount(conditions: [Partial<Hospitals>]): Promise<number>;
+    getClientCountry(): Promise<any[]>;
+    getCountCountry(conditions: [Partial<Hospitals>]): Promise<number>;
+    getCountState(conditions: [Partial<Hospitals>]): Promise<number>;
+    getCountCity(conditions: [Partial<Hospitals>]): Promise<number>;
+}
