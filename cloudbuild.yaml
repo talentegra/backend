@@ -3,8 +3,6 @@ steps:
   args: ['install']
 - name: 'gcr.io/cloud-builders/npm'
   args: ['run', 'build']
-- name: 'gcr.io/cloud-builders/npm'
-  args: ['run', 'start']  
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy", "backend.yaml", "-v", "$_GAE_VERSION"]
 - name: "gcr.io/cloud-builders/gcloud"
