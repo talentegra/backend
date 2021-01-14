@@ -9,11 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DatabaseService = void 0;
 require("reflect-metadata");
 const common_1 = require("@nestjs/common");
 const common_2 = require("../shared/common");
 const typeorm_1 = require("typeorm");
 const fs = require("fs");
+const config_1 = require("../config/config");
 let DatabaseService = class DatabaseService {
     constructor() {
         this.readSqlFile = (filepath) => {
@@ -22,7 +24,7 @@ let DatabaseService = class DatabaseService {
                 .toString()
                 .replace(/\r?\n|\r/g, '')
                 .split(';')
-                .filter((query) => query ? .length : );
+                .filter((query) => query === null || query === void 0 ? void 0 : query.length);
         };
     }
     checkFileExistsSync(filepath) {

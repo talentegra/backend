@@ -16,25 +16,30 @@ var __rest = (this && this.__rest) || function (s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
     return t;
 };
+var UserService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const user_entity_1 = require("./entity/user.entity");
-const common_2 = require("src/shared/common");
+const common_2 = require("../shared/common");
 const user_details_dto_1 = require("./dto/user-details.dto");
-const encrypt_decrypt_service_1 = require("src/common/encrypt.decrypt.service");
-const config_1 = require("src/config/config");
-const mailer_service_1 = require("src/mailer/mailer.service");
+const encrypt_decrypt_service_1 = require("../common/encrypt.decrypt.service");
+const config_1 = require("../config/config");
+const mailer_service_1 = require("../mailer/mailer.service");
+const mailer_dto_1 = require("../mailer/dto/mailer.dto");
 const fs_1 = require("fs");
 const uuid = require("uuid");
 const moment = require("moment");
 const usersettings_entity_1 = require("./entity/usersettings.entity");
-const database_service_1 = require("src/database/database.service");
+const database_service_1 = require("../database/database.service");
 let UserService = UserService_1 = class UserService {
     constructor(userRepository, mailerService, userSettingsRepository, databaseservice) {
         this.userRepository = userRepository;
@@ -121,7 +126,7 @@ let UserService = UserService_1 = class UserService {
             };
             return error;
         }
-        user = Object.assign({}, user, updateUserDto);
+        user = Object.assign(Object.assign({}, user), updateUserDto);
         if (updateUserDto.image) {
             let fileExtension = updateUserDto.imageName.split(".")[1];
             await fs_1.promises.writeFile(config_1.CONFIG.USER.PROFILE_IMG_PATH + "/" + user.userId + "." + fileExtension, updateUserDto.image + "", { encoding: 'base64' });
@@ -363,7 +368,7 @@ let UserService = UserService_1 = class UserService {
             };
             return response;
         }
-        let updatedUserSettingsDto = Object.assign({}, userSettings, updateUserSettingsDto);
+        let updatedUserSettingsDto = Object.assign(Object.assign({}, userSettings), updateUserSettingsDto);
         await this.userSettingsRepository.save(updatedUserSettingsDto);
         response = {
             status: common_2.ApiResponseStatus.SUCCESS,
@@ -382,5 +387,4 @@ UserService = UserService_1 = __decorate([
         typeorm_2.Repository, database_service_1.DatabaseService])
 ], UserService);
 exports.UserService = UserService;
-var UserService_1;
 //# sourceMappingURL=user.service.js.map

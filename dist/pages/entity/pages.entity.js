@@ -9,8 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Pages = void 0;
 const typeorm_1 = require("typeorm");
-const modules_entity_1 = require("src/modules/entity/modules.entity");
+const modules_entity_1 = require("../../modules/entity/modules.entity");
 let Pages = class Pages {
 };
 __decorate([

@@ -6,11 +6,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MailerModule = void 0;
 const common_1 = require("@nestjs/common");
 const mailer_controller_1 = require("./mailer.controller");
 const mailer_service_1 = require("./mailer.service");
-const user_module_1 = require("src/user/user.module");
-const hospitals_module_1 = require("src/hospitals/hospitals.module");
+const user_module_1 = require("../user/user.module");
+const hospitals_module_1 = require("../hospitals/hospitals.module");
 let MailerModule = class MailerModule {
 };
 MailerModule = __decorate([

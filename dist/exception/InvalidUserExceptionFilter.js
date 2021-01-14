@@ -6,9 +6,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.InvalidUserExceptionFilter = void 0;
 const common_1 = require("@nestjs/common");
 const nestjs_oauth2_server_1 = require("@switchit/nestjs-oauth2-server");
-const common_2 = require("src/shared/common");
+const common_2 = require("../shared/common");
 let InvalidUserExceptionFilter = class InvalidUserExceptionFilter {
     catch(exception, host) {
         const ctx = host.switchToHttp();

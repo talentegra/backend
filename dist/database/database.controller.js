@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DatabaseController = void 0;
 const common_1 = require("@nestjs/common");
 const database_service_1 = require("./database.service");
 let DatabaseController = class DatabaseController {

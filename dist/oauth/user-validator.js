@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserValidator = void 0;
 const common_1 = require("@nestjs/common");
 const nestjs_oauth2_server_1 = require("@switchit/nestjs-oauth2-server");
 const user_service_1 = require("../user/user.service");

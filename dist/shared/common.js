@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ErrorMessageType = exports.ApiResponseStatus = void 0;
 var ApiResponseStatus;
 (function (ApiResponseStatus) {
     ApiResponseStatus["SUCCESS"] = "Ok";

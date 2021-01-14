@@ -12,8 +12,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MailerController = void 0;
 const common_1 = require("@nestjs/common");
 const mailer_service_1 = require("./mailer.service");
+const common_2 = require("../shared/common");
 let MailerController = class MailerController {
     constructor(mailerService) {
         this.mailerService = mailerService;

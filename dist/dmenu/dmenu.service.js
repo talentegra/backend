@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DmenuService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const dmenu_entity_1 = require("./entity/dmenu.entity");
@@ -94,7 +95,7 @@ let DmenuService = class DmenuService {
     }
     async update(updateDmenuDto) {
         let toUpdate = await this.dmenuRepository.findOne(updateDmenuDto.dmenuId);
-        let updatedData = Object.assign({}, toUpdate, updateDmenuDto);
+        let updatedData = Object.assign(Object.assign({}, toUpdate), updateDmenuDto);
         updatedData.status = updateDmenuDto.status;
         updatedData.modulesId = updateDmenuDto.modulesId;
         updatedData = await this.dmenuRepository.save(updatedData);

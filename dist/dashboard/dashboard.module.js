@@ -6,16 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DashboardModule = void 0;
 const common_1 = require("@nestjs/common");
 const dashboard_controller_1 = require("./dashboard.controller");
 const dashboard_service_1 = require("./dashboard.service");
-const hospitals_module_1 = require("src/hospitals/hospitals.module");
-const departments_module_1 = require("src/departments/departments.module");
-const modules_module_1 = require("src/modules/modules.module");
-const pages_module_1 = require("src/pages/pages.module");
-const countries_module_1 = require("src/countries/countries.module");
-const states_module_1 = require("src/states/states.module");
-const cities_module_1 = require("src/cities/cities.module");
+const hospitals_module_1 = require("../hospitals/hospitals.module");
+const departments_module_1 = require("../departments/departments.module");
+const modules_module_1 = require("../modules/modules.module");
+const pages_module_1 = require("../pages/pages.module");
+const countries_module_1 = require("../countries/countries.module");
+const states_module_1 = require("../states/states.module");
+const cities_module_1 = require("../cities/cities.module");
 let DashboardModule = class DashboardModule {
 };
 DashboardModule = __decorate([

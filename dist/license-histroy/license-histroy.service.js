@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.LicenseHistroyService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const licence_histroy_entity_1 = require("./entity/licence-histroy.entity");
@@ -20,9 +21,10 @@ const departments_service_1 = require("../departments/departments.service");
 const typeorm_2 = require("typeorm");
 const common_2 = require("../shared/common");
 const typeorm_3 = require("typeorm");
-const encrypt_decrypt_service_1 = require("src/common/encrypt.decrypt.service");
-const config_1 = require("src/config/config");
-const pages_service_1 = require("src/pages/pages.service");
+const encrypt_decrypt_service_1 = require("../common/encrypt.decrypt.service");
+const config_1 = require("../config/config");
+const pages_service_1 = require("../pages/pages.service");
+const pages_entity_1 = require("../pages/entity/pages.entity");
 const moment = require("moment");
 let LicenseHistroyService = class LicenseHistroyService {
     constructor(licenseHistroyRepository, hospitalsService, departmentService, pageservice) {
@@ -209,7 +211,7 @@ let LicenseHistroyService = class LicenseHistroyService {
     }
     async update(updateLicenseHistroyDto) {
         let toUpdate = await this.licenseHistroyRepository.findOne(updateLicenseHistroyDto.licenseHistroyId);
-        let updatedData = Object.assign({}, toUpdate, updateLicenseHistroyDto);
+        let updatedData = Object.assign(Object.assign({}, toUpdate), updateLicenseHistroyDto);
         updatedData.hospitalId = updateLicenseHistroyDto.hospitalId;
         updatedData.hospitalLimit = updateLicenseHistroyDto.hospitalLimit;
         updatedData.departmentEquipmentLimit = updateLicenseHistroyDto.departmentEquipmentLimit;

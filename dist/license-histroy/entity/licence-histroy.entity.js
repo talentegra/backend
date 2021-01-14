@@ -9,8 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.LicenseHistroy = void 0;
 const typeorm_1 = require("typeorm");
-const hospitals_entity_1 = require("src/hospitals/entity/hospitals.entity");
+const hospitals_entity_1 = require("../../hospitals/entity/hospitals.entity");
+const modules_entity_1 = require("../../modules/entity/modules.entity");
+const departments_entity_1 = require("../../departments/entity/departments.entity");
 let LicenseHistroy = class LicenseHistroy {
 };
 __decorate([

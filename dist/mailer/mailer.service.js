@@ -16,21 +16,26 @@ var __rest = (this && this.__rest) || function (s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MailerService = void 0;
 const nodemailer = require("nodemailer");
 const fs_1 = require("fs");
 const path = require("path");
 const handlebars = require("handlebars");
-const config_1 = require("src/config/config");
+const config_1 = require("../config/config");
 const common_1 = require("@nestjs/common");
-const common_2 = require("src/shared/common");
-const user_service_1 = require("src/user/user.service");
-const encrypt_decrypt_service_1 = require("src/common/encrypt.decrypt.service");
-const hospitals_service_1 = require("src/hospitals/hospitals.service");
+const common_2 = require("../shared/common");
+const user_service_1 = require("../user/user.service");
+const user_details_dto_1 = require("../user/dto/user-details.dto");
+const encrypt_decrypt_service_1 = require("../common/encrypt.decrypt.service");
+const hospitals_service_1 = require("../hospitals/hospitals.service");
+const hospitals_entity_1 = require("../hospitals/entity/hospitals.entity");
 let MailerService = class MailerService {
     constructor(userService, hospitalService) {
         this.userService = userService;
@@ -141,7 +146,7 @@ let MailerService = class MailerService {
         var templateContent = await this.getTemplateContent(templateName);
         var template = handlebars.compile(templateContent);
         var htmlToSend = template(templateObject);
-        var mailOptions = Object.assign({ from: config_1.CONFIG.EMAIL.AUTH.username }, mailInfo, { html: htmlToSend });
+        var mailOptions = Object.assign(Object.assign({ from: config_1.CONFIG.EMAIL.AUTH.username }, mailInfo), { html: htmlToSend });
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 return console.log(`error: ${error}`);

@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ModulesService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const modules_entity_1 = require("./entity/modules.entity");
@@ -93,7 +94,7 @@ let ModulesService = class ModulesService {
     }
     async update(updateModulesDto) {
         let toUpdate = await this.modulesRepository.findOne(updateModulesDto.modelesId);
-        let updatedData = Object.assign({}, toUpdate, updateModulesDto);
+        let updatedData = Object.assign(Object.assign({}, toUpdate), updateModulesDto);
         updatedData.status = updateModulesDto.status;
         updatedData = await this.modulesRepository.save(updatedData);
         let updatedResponse = {

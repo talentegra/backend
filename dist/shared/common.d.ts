@@ -5,12 +5,12 @@ export interface ApiResponse<T> {
 }
 export declare enum ApiResponseStatus {
     SUCCESS = "Ok",
-    ERROR = "Error",
+    ERROR = "Error"
 }
 export declare enum ErrorMessageType {
     INFO = "info",
     WARN = "warning",
-    ERROR = "error",
+    ERROR = "error"
 }
 export interface ErrorMessage {
     type: ErrorMessageType;
